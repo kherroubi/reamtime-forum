@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Question;
 use Illuminate\Http\Request;
 use App\Http\Resources\QuestionResource;
-
+use Symfony\Component\HttpFoundation\Response;
 class QuestionController extends Controller
 {
     public function index(){
@@ -23,7 +23,7 @@ class QuestionController extends Controller
 
     public function update(Request $request, Question $question){
         $question->update($request->all());
-        return response('updated', \Symfony\Component\HttpFoundation\Response::HTTP_ACCEPTED);          
+        return response('updated', Response::HTTP_ACCEPTED);
     }
 
     public function destroy(Question $question){
