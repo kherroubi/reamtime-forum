@@ -14,7 +14,7 @@ class QuestionController extends Controller
 
     public function store(Request $request){
         $question = Question::create($request->all());
-        return $question;
+        return new QuestionResource($question);
     }
 
     public function show(Question $question){
@@ -23,7 +23,7 @@ class QuestionController extends Controller
 
     public function update(Request $request, Question $question){
         $question->update($request->all());
-        return $question;
+        return new QuestionResource($question);
     }
 
     public function destroy(Question $question){
