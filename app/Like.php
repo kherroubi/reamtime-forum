@@ -6,5 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Like extends Model
 {
-    //
+	protected $guarded = [];
+    
+    public function User(){
+    	return $this->belongsTo(\App\User::class);
+    }
 }
