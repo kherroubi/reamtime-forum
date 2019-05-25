@@ -9,7 +9,7 @@ use Symfony\Component\HttpFoundation\Response;
 class QuestionController extends Controller
 {
     public function index(){
-        return QuestionResource::collection(Question::latest()->get());    
+        return QuestionResource::collection(Question::paginate(10));    
     }
 
     public function store(Request $request){
@@ -23,11 +23,11 @@ class QuestionController extends Controller
 
     public function update(Request $request, Question $question){
         $question->update($request->all());
-        return response('updated', Response::HTTP_ACCEPTED);
+        return $question;
     }
 
     public function destroy(Question $question){
         $question->delete();
-        return response('Question deleted', 202);
+        return response('Question deleted', Response::HTTP_NO_CONTENT);
     }
 }
